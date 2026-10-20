@@ -58,6 +58,16 @@ src/
 
 构建后部署 `dist/`。由于使用 BrowserRouter，托管服务必须把非静态资源的前端路由回退到 `index.html`。`public/_redirects` 提供 Cloudflare Pages / Netlify 常用的 SPA 回退规则；其他平台需配置等价规则。当前没有部署外部环境。
 
+Cloudflare Workers 的 Git 集成使用仓库根目录执行以下命令（不是 `apps/web` 工作目录）：
+
+```text
+构建命令：npm --prefix apps/web ci && npm --prefix apps/web run build
+部署命令：npx wrangler deploy --config apps/web/wrangler.jsonc
+预览命令：npx wrangler preview --config apps/web/wrangler.jsonc
+```
+
+`wrangler.jsonc` 指定 Worker 名称 `milestone`、静态目录 `dist` 和 SPA 路由回退；控制台项目名称需与配置中的名称一致。预览命令用于分支预览部署，不是本地 `npm run preview` 服务。首次连接前先将配置提交并推送到 GitHub。此配置仅发布 Web，不构建或发布移动安装包。
+
 ## 验收范围
 
 自动测试覆盖金额与状态约束、权限前置条件、防重复释放、失败重试、刷新中断、搜索导航、草稿创建、语言与主题持久化。DOM 测试不验证 CSS 尺寸、真实弹窗焦点或浏览器渲染；需另在真实浏览器验收 1920 / 1440 / 1024 / 768 / 390px、长文本、滚动、缩放、深色主题、键盘操作和刷新深链接。当前执行环境没有可连接的浏览器会话，尚未完成截图或真实浏览器视觉验收。
