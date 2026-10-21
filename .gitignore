@@ -1,0 +1,26 @@
+# Dependencies and generated output
+node_modules/
+dist/
+dist-ssr/
+.expo/
+.wrangler/
+*.tsbuildinfo
+
+# Local environment and signing material
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.pem
+*.key
+*.p8
+*.p12
+*.jks
+*.mobileprovision
+
+# Local tooling and temporary artifacts
+.claude/
+.tmp-video/
+apps/web/milestone-web-cloudflare.zip
+*.log
+.DS_Store
