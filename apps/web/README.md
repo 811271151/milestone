@@ -56,7 +56,7 @@ src/
 
 ## 部署
 
-构建后部署 `dist/`。由于使用 BrowserRouter，托管服务必须把非静态资源的前端路由回退到 `index.html`。`public/_redirects` 提供 Cloudflare Pages / Netlify 常用的 SPA 回退规则；其他平台需配置等价规则。当前没有部署外部环境。
+构建后部署 `dist/`。由于使用 BrowserRouter，托管服务必须把非静态资源的前端路由回退到 `index.html`。Workers Static Assets 通过 `wrangler.jsonc` 中的 `not_found_handling: "single-page-application"` 完成回退，不要再添加 `public/_redirects` 的全局 `/index.html` 规则，否则 Wrangler 会判定为无限重定向；其他托管平台需配置等价的 SPA 回退规则。
 
 Cloudflare Workers 的 Git 集成使用仓库根目录执行以下命令（不是 `apps/web` 工作目录）：
 
