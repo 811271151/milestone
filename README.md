@@ -14,7 +14,7 @@ Milestone 是一个面向独立开发者、设计师和小型工作室的链上�
 
 ## 环境要求
 
-- Node.js 22.12 或更高版本。Web 使用 Vite 8；保持 Node 版本一致可避免依赖和构建问题。
+- Node.js 22.13 或更高版本。Expo SDK 57 要求 Node.js 22.13.x 起；Web 使用 Vite 8，建议两个工程统一使用该版本。
 - npm（两个子项目都提交了 `package-lock.json`）。
 - 移动端真机测试需安装 Expo Go；Android 与电脑建议连接同一 Wi-Fi。
 
